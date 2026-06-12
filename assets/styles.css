@@ -926,48 +926,31 @@ label {
 }
 
 .map-panel {
-  background:
-    linear-gradient(90deg, transparent 0 46%, rgba(34, 211, 238, 0.42) 46% 48%, transparent 48%),
-    linear-gradient(18deg, transparent 0 44%, rgba(255, 91, 115, 0.44) 44% 47%, transparent 47%),
-    linear-gradient(145deg, rgba(34, 211, 238, 0.16), rgba(251, 191, 36, 0.1)),
-    #0b1223;
+  background: #0b1223;
+  border: 1px solid var(--line);
   min-height: 210px;
+  overflow: hidden;
   position: relative;
 }
 
 .map-panel::before {
-  background:
-    repeating-linear-gradient(0deg, rgba(248, 250, 252, 0.08) 0 1px, transparent 1px 34px),
-    repeating-linear-gradient(90deg, rgba(248, 250, 252, 0.08) 0 1px, transparent 1px 34px);
+  background: linear-gradient(90deg, rgba(34, 211, 238, 0.55), rgba(255, 91, 115, 0.58), rgba(251, 191, 36, 0.58));
+  bottom: 0;
   content: "";
-  inset: 0;
+  height: 3px;
+  left: 0;
   position: absolute;
-}
-
-.map-panel span {
-  background: var(--gold);
-  border: 3px solid #120b00;
-  border-radius: 999px 999px 999px 0;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
-  height: 2rem;
-  left: 48%;
-  position: absolute;
-  top: 43%;
-  transform: rotate(-45deg);
-  width: 2rem;
+  right: 0;
   z-index: 1;
 }
 
-.map-panel span::after {
-  background: #120b00;
-  border-radius: 999px;
-  content: "";
-  height: 0.5rem;
-  left: 50%;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 0.5rem;
+.map-panel iframe {
+  border: 0;
+  display: block;
+  filter: saturate(0.92) contrast(1.04);
+  height: 100%;
+  min-height: 210px;
+  width: 100%;
 }
 
 .table-wrap {
