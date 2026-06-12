@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Order | One-Punch Anime Emporium</title><link rel="stylesheet" href="assets/styles.css"><script src="assets/app.js" defer></script></head>
+<body>
+  <header class="site-header"><div class="nav-wrap"><a class="brand" href="index.html"><span class="brand-mark">OP</span><span>One-Punch Anime Emporium</span></a><nav aria-label="Primary"><ul class="nav-menu" data-menu><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="catalog.html">Catalog</a></li><li><a href="figures.html">Figures</a></li><li><a href="manga.html">Manga</a></li><li><a href="comics.html">Comics</a></li><li><a href="new-arrivals.html">New</a></li><li><a href="special-orders.html">Special Orders</a></li><li><a href="locations.html">Locations</a></li><li><a href="contact.html">Contact</a></li><li><a href="resources.html">Resources</a></li></ul></nav><div class="nav-actions"><a class="icon-button" href="order.html" aria-label="Cart">Cart <span class="cart-count" data-cart-count>0</span></a><button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" data-menu-toggle>Menu</button></div></div></header>
+  <main>
+    <section class="page-hero"><span class="eyebrow">Checkout request</span><h1>Order</h1><p>Submit a local pickup or delivery request. The assignment does not require database or payment processing, so this page simulates the order workflow.</p></section>
+    <section class="section">
+      <div class="grid two">
+        <div class="card"><h2>Cart</h2><div data-order-summary></div></div>
+        <form class="card form-grid" data-confirm-form="#order-notice">
+          <label>Name<input class="field" required name="name"></label>
+          <label>Email<input class="field" required type="email" name="email"></label>
+          <label>Fulfillment<select class="select" name="method"><option>Pickup</option><option>Local delivery</option></select></label>
+          <label>Preferred store<select class="select" name="store"><option>Downtown Chico</option><option>North Valley</option><option>East Avenue</option><option>South Chico</option></select></label>
+          <label class="full">Notes<textarea class="textarea" name="notes"></textarea></label>
+          <button class="button full" type="submit">Submit Order</button>
+          <p id="order-notice" class="notice full">Order request submitted. A staff confirmation would be sent by email.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="footer-grid"><div><h3>One-Punch Anime Emporium</h3><p>Pickup and local delivery requests.</p></div><div class="footer-links"><strong>Shop</strong><a href="catalog.html">Catalog</a><a href="special-orders.html">Special Orders</a></div><div class="footer-links"><strong>Support</strong><a href="contact.html">Contact</a><a href="locations.html">Locations</a></div></div></footer>
+</body></html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Special Orders | One-Punch Anime Emporium</title><link rel="stylesheet" href="assets/styles.css"><script src="assets/app.js" defer></script></head>
+<body>
+  <header class="site-header"><div class="nav-wrap"><a class="brand" href="index.html"><span class="brand-mark">OP</span><span>One-Punch Anime Emporium</span></a><nav aria-label="Primary"><ul class="nav-menu" data-menu><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="catalog.html">Catalog</a></li><li><a href="figures.html">Figures</a></li><li><a href="manga.html">Manga</a></li><li><a href="comics.html">Comics</a></li><li><a href="new-arrivals.html">New</a></li><li><a href="special-orders.html">Special Orders</a></li><li><a href="locations.html">Locations</a></li><li><a href="contact.html">Contact</a></li><li><a href="resources.html">Resources</a></li></ul></nav><div class="nav-actions"><a class="icon-button" href="order.html" aria-label="Cart">Cart <span class="cart-count" data-cart-count>0</span></a><button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" data-menu-toggle>Menu</button></div></div></header>
+  <main>
+    <section class="page-hero"><span class="eyebrow">Hard-to-find requests</span><h1>Special Orders</h1><p>Request anime figures, manga, comics, model kits, or collectibles not currently listed in the catalog.</p></section>
+    <section class="section">
+      <div class="grid two">
+        <form class="card form-grid" data-confirm-form="#special-order-notice">
+          <label>Name<input class="field" required name="name"></label>
+          <label>Email<input class="field" required type="email" name="email"></label>
+          <label>Item type<select class="select" name="type"><option>Figure</option><option>Manga</option><option>Comic</option><option>Accessory</option><option>Other</option></select></label>
+          <label>Target budget<input class="field" name="budget" placeholder="$"></label>
+          <label class="full">Item details<textarea class="textarea" required name="details"></textarea></label>
+          <button class="button full" type="submit">Submit Request</button>
+          <p id="special-order-notice" class="notice full">Request received. Store staff would follow up with availability and price.</p>
+        </form>
+        <div class="card">
+          <h2>Request workflow</h2>
+          <p>Staff reviews customer details, checks distributor availability, confirms price and timing, and then places the item on hold after customer approval.</p>
+          <div class="grid two" style="margin-top:1rem">
+            <div class="stat"><strong>1</strong><p>Submit item info</p></div>
+            <div class="stat"><strong>2</strong><p>Staff checks sources</p></div>
+            <div class="stat"><strong>3</strong><p>Customer approves</p></div>
+            <div class="stat"><strong>4</strong><p>Pickup or delivery</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="footer-grid"><div><h3>One-Punch Anime Emporium</h3><p>Special-order anime collectibles.</p></div><div class="footer-links"><strong>Shop</strong><a href="catalog.html">Catalog</a><a href="new-arrivals.html">New Arrivals</a></div><div class="footer-links"><strong>Support</strong><a href="contact.html">Contact</a><a href="locations.html">Locations</a></div></div></footer>
+</body></html>
