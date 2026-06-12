@@ -1,13 +1,13 @@
-# ISM4300 - One-Punch Anime Emporium
+# One-Punch Anime Emporium
 
-Static website for the ISM4300 Project 1 group assignment.
+Static storefront website for One-Punch Anime Emporium.
 
 ## GitHub Pages
 
 This repository can publish directly from the `main` branch root at:
 
 ```text
-https://pete543.github.io/onepunchanime.github.io/
+https://pete543.github.io/
 ```
 
 ## Cloudflare Pages
@@ -40,3 +40,7 @@ Then visit `http://localhost:8788`.
 - Locations
 - Contact
 - Resources
+- Gallery
+- Customer Testimonials
+- Shipping Policy
+- Return Policy
