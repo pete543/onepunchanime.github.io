@@ -707,6 +707,66 @@ p {
   margin-top: auto;
 }
 
+.catalog-layout {
+  align-items: start;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(175px, 220px) 1fr;
+}
+
+.catalog-rail,
+.catalog-summary,
+.newsletter-panel,
+.location-card {
+  background: linear-gradient(180deg, rgba(21, 31, 53, 0.94), rgba(12, 18, 34, 0.94));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.catalog-rail {
+  display: grid;
+  gap: 0.42rem;
+  padding: 1rem;
+  position: sticky;
+  top: 5rem;
+}
+
+.catalog-rail strong,
+.catalog-summary strong {
+  color: #fff;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1.1rem;
+}
+
+.catalog-rail a {
+  color: var(--teal);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.catalog-rail span {
+  color: var(--ink-soft);
+}
+
+.rail-divider {
+  border-top: 1px solid var(--line);
+  margin: 0.5rem 0;
+}
+
+.catalog-summary {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  padding: 0.8rem 1rem;
+}
+
+.catalog-summary span {
+  color: var(--ink-muted);
+}
+
 .toolbar {
   align-items: center;
   background: rgba(16, 24, 43, 0.72);
@@ -774,6 +834,140 @@ label {
 
 .notice.show {
   display: block;
+}
+
+.newsletter-section .section {
+  padding-block: 2.5rem;
+}
+
+.newsletter-panel {
+  align-items: end;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  padding: 1.25rem;
+}
+
+.newsletter-panel h2 {
+  font-size: clamp(1.65rem, 3vw, 2.55rem);
+  margin-top: 0.15rem;
+}
+
+.newsletter-panel p {
+  margin-top: 0.55rem;
+}
+
+.newsletter-form {
+  align-items: end;
+  display: grid;
+  gap: 0.65rem;
+  grid-template-columns: 1fr auto;
+}
+
+.newsletter-panel .notice {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+.location-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.location-card {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(250px, 0.9fr) minmax(0, 1.35fr);
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.location-card h2 {
+  font-size: clamp(1.55rem, 3vw, 2.35rem);
+  margin-top: 0.4rem;
+}
+
+.location-copy {
+  align-self: center;
+}
+
+.location-copy a:not(.button) {
+  color: var(--teal);
+  text-decoration: none;
+}
+
+.location-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.9fr);
+  margin: 0.8rem 0 1rem;
+}
+
+.hours-list {
+  display: grid;
+  gap: 0.32rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hours-list li {
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-soft);
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  padding-bottom: 0.32rem;
+}
+
+.hours-list span:first-child {
+  color: #fff;
+  font-weight: 700;
+}
+
+.map-panel {
+  background:
+    linear-gradient(90deg, transparent 0 46%, rgba(34, 211, 238, 0.42) 46% 48%, transparent 48%),
+    linear-gradient(18deg, transparent 0 44%, rgba(255, 91, 115, 0.44) 44% 47%, transparent 47%),
+    linear-gradient(145deg, rgba(34, 211, 238, 0.16), rgba(251, 191, 36, 0.1)),
+    #0b1223;
+  min-height: 210px;
+  position: relative;
+}
+
+.map-panel::before {
+  background:
+    repeating-linear-gradient(0deg, rgba(248, 250, 252, 0.08) 0 1px, transparent 1px 34px),
+    repeating-linear-gradient(90deg, rgba(248, 250, 252, 0.08) 0 1px, transparent 1px 34px);
+  content: "";
+  inset: 0;
+  position: absolute;
+}
+
+.map-panel span {
+  background: var(--gold);
+  border: 3px solid #120b00;
+  border-radius: 999px 999px 999px 0;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+  height: 2rem;
+  left: 48%;
+  position: absolute;
+  top: 43%;
+  transform: rotate(-45deg);
+  width: 2rem;
+  z-index: 1;
+}
+
+.map-panel span::after {
+  background: #120b00;
+  border-radius: 999px;
+  content: "";
+  height: 0.5rem;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.5rem;
 }
 
 .table-wrap {
@@ -886,6 +1080,21 @@ th {
   }
 
   .toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .catalog-layout,
+  .location-card,
+  .location-grid,
+  .newsletter-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .catalog-rail {
+    position: static;
+  }
+
+  .newsletter-form {
     grid-template-columns: 1fr;
   }
 }

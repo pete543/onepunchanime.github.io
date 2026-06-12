@@ -17,17 +17,36 @@
       <h1>Catalog</h1>
       <p>Browse current inventory by keyword, category, price, and stock level.</p>
     </section>
-    <section class="section">
-      <div class="toolbar" aria-label="Catalog controls">
-        <input class="field" type="search" placeholder="Search figures, manga, comics, accessories" data-search>
-        <select class="select" data-category aria-label="Category">
-          <option>All</option><option>Figures</option><option>Manga</option><option>Comics</option><option>Accessories</option><option>New Arrivals</option><option>Special Orders</option>
-        </select>
-        <select class="select" data-sort aria-label="Sort">
-          <option value="stock">Most Stock</option><option value="price-asc">Price Low to High</option><option value="price-desc">Price High to Low</option>
-        </select>
+    <section class="section catalog-layout">
+      <aside class="catalog-rail" aria-label="Browse by category">
+        <strong>Browse by category</strong>
+        <a href="figures.html">Figures</a>
+        <a href="manga.html">Manga</a>
+        <a href="comics.html">Comics</a>
+        <a href="new-arrivals.html">New Arrivals</a>
+        <a href="special-orders.html">Special Orders</a>
+        <div class="rail-divider"></div>
+        <strong>Shop filters</strong>
+        <span>Price range</span>
+        <span>Availability</span>
+        <span>Pickup or delivery</span>
+      </aside>
+      <div>
+        <div class="catalog-summary">
+          <strong data-results-count>16 results</strong>
+          <span>Use search, category, and sort controls to narrow the current shelf.</span>
+        </div>
+        <div class="toolbar" aria-label="Catalog controls">
+          <input class="field" type="search" placeholder="Search figures, manga, comics, accessories" data-search>
+          <select class="select" data-category aria-label="Category">
+            <option>All</option><option>Figures</option><option>Manga</option><option>Comics</option><option>Accessories</option><option>New Arrivals</option><option>Special Orders</option>
+          </select>
+          <select class="select" data-sort aria-label="Sort">
+            <option value="stock">Most Stock</option><option value="price-asc">Price Low to High</option><option value="price-desc">Price High to Low</option>
+          </select>
+        </div>
+        <div class="grid four" data-catalog></div>
       </div>
-      <div class="grid four" data-catalog></div>
     </section>
   </main>
   <footer class="site-footer"><div class="footer-grid"><div><h3>One-Punch Anime Emporium</h3><p>Catalog browsing and ordering for Chico-area customers.</p></div><div class="footer-links"><strong>Shop</strong><a href="figures.html">Figures</a><a href="manga.html">Manga</a><a href="comics.html">Comics</a></div><div class="footer-links"><strong>Help</strong><a href="contact.html">Contact</a><a href="resources.html">Resources</a></div></div></footer>

@@ -20,6 +20,26 @@ const products = [
     description: "Compact display statue for desks, dorm rooms, and starter collections."
   },
   {
+    id: "fig-003",
+    name: "Crimson Captain Figure",
+    category: "Figures",
+    price: 22.99,
+    stock: 8,
+    tag: "Action Figure",
+    visual: "figures",
+    description: "A mid-size collector figure with display base and bright shelf presence."
+  },
+  {
+    id: "fig-004",
+    name: "Rival Swordsman Statue",
+    category: "Figures",
+    price: 15.29,
+    stock: 5,
+    tag: "Import",
+    visual: "figures",
+    description: "A compact swordsman display piece for collectors building a battle shelf."
+  },
+  {
     id: "man-001",
     name: "Shonen Starter Manga Set",
     category: "Manga",
@@ -40,6 +60,26 @@ const products = [
     description: "Three cozy manga volumes selected by the Chico store team."
   },
   {
+    id: "man-003",
+    name: "Adventure Arc Volume Pack",
+    category: "Manga",
+    price: 36.99,
+    stock: 9,
+    tag: "Volume Pack",
+    visual: "manga",
+    description: "A multi-volume pack for readers starting a longer adventure storyline."
+  },
+  {
+    id: "man-004",
+    name: "Comedy Club Manga Bundle",
+    category: "Manga",
+    price: 31.25,
+    stock: 6,
+    tag: "Bundle",
+    visual: "manga",
+    description: "A lighthearted bundle chosen for quick reads and weekend recommendations."
+  },
+  {
     id: "com-001",
     name: "Vintage Import Comic Pack",
     category: "Comics",
@@ -48,6 +88,16 @@ const products = [
     tag: "Low Stock",
     visual: "comics",
     description: "Hard-to-find import comics sourced through specialty distributors."
+  },
+  {
+    id: "com-002",
+    name: "Convention Cover Comic Set",
+    category: "Comics",
+    price: 44.95,
+    stock: 3,
+    tag: "Limited Cover",
+    visual: "comics",
+    description: "A small run of alternate-cover comics for collectors who like display copies."
   },
   {
     id: "acc-001",
@@ -60,6 +110,26 @@ const products = [
     description: "Protective sleeves for manga, comics, trading cards, and small prints."
   },
   {
+    id: "acc-002",
+    name: "Village Symbol Headband",
+    category: "Accessories",
+    price: 10.99,
+    stock: 18,
+    tag: "Cosplay",
+    visual: "sleeves",
+    description: "A display-friendly cosplay accessory for costumes, photos, and shelf styling."
+  },
+  {
+    id: "acc-003",
+    name: "Blue Blade Display Prop",
+    category: "Accessories",
+    price: 69.55,
+    stock: 2,
+    tag: "Low Stock",
+    visual: "sleeves",
+    description: "A decorative prop sword for display, conventions, and themed collections."
+  },
+  {
     id: "new-001",
     name: "Weekend Drop Mystery Box",
     category: "New Arrivals",
@@ -68,6 +138,16 @@ const products = [
     tag: "New",
     visual: "mystery",
     description: "A rotating mix of figures, art cards, snacks, and surprise shelf finds."
+  },
+  {
+    id: "new-002",
+    name: "Collector Ship Model",
+    category: "New Arrivals",
+    price: 34.55,
+    stock: 4,
+    tag: "New",
+    visual: "mystery",
+    description: "A playful display model for fans who like ships, crews, and shelf scenes."
   },
   {
     id: "pre-001",
@@ -189,6 +269,7 @@ function setupCatalog() {
   const search = document.querySelector("[data-search]");
   const category = document.querySelector("[data-category]");
   const sort = document.querySelector("[data-sort]");
+  const count = document.querySelector("[data-results-count]");
 
   function applyFilters() {
     const term = (search?.value || "").toLowerCase();
@@ -205,6 +286,7 @@ function setupCatalog() {
     if (sort?.value === "stock") sorted.sort((a, b) => b.stock - a.stock);
 
     renderProducts(sorted, "[data-catalog]");
+    if (count) count.textContent = `${sorted.length} result${sorted.length === 1 ? "" : "s"}`;
   }
 
   [search, category, sort].filter(Boolean).forEach((control) => {
