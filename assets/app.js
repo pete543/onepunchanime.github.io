@@ -6,7 +6,7 @@ const products = [
     price: 79.99,
     stock: 4,
     tag: "Rare Find",
-    symbol: "HF",
+    visual: "figures",
     description: "A premium shelf-ready figure with a dynamic action pose and collector box."
   },
   {
@@ -16,7 +16,7 @@ const products = [
     price: 34.99,
     stock: 10,
     tag: "Local Favorite",
-    symbol: "TH",
+    visual: "figures",
     description: "Compact display statue for desks, dorm rooms, and starter collections."
   },
   {
@@ -26,7 +26,7 @@ const products = [
     price: 42.5,
     stock: 16,
     tag: "Bundle",
-    symbol: "MS",
+    visual: "manga",
     description: "A curated first-volume set for readers exploring high-energy action series."
   },
   {
@@ -36,7 +36,7 @@ const products = [
     price: 28.75,
     stock: 7,
     tag: "Staff Pick",
-    symbol: "SP",
+    visual: "manga",
     description: "Three cozy manga volumes selected by the Chico store team."
   },
   {
@@ -46,7 +46,7 @@ const products = [
     price: 59.99,
     stock: 2,
     tag: "Low Stock",
-    symbol: "IC",
+    visual: "comics",
     description: "Hard-to-find import comics sourced through specialty distributors."
   },
   {
@@ -56,7 +56,7 @@ const products = [
     price: 12.99,
     stock: 25,
     tag: "Accessory",
-    symbol: "DS",
+    visual: "sleeves",
     description: "Protective sleeves for manga, comics, trading cards, and small prints."
   },
   {
@@ -66,7 +66,7 @@ const products = [
     price: 49.99,
     stock: 6,
     tag: "New",
-    symbol: "MB",
+    visual: "mystery",
     description: "A rotating mix of figures, art cards, snacks, and surprise shelf finds."
   },
   {
@@ -76,7 +76,7 @@ const products = [
     price: 20.0,
     stock: 99,
     tag: "Request",
-    symbol: "SO",
+    visual: "request",
     description: "A placeholder deposit for hard-to-find items requested by customers."
   }
 ];
@@ -136,11 +136,23 @@ function stockClass(stock) {
   return "";
 }
 
+function productVisual(type) {
+  const visuals = {
+    figures: "<span class=\"figure-box\"></span><span class=\"figure-box\"></span>",
+    manga: "<span class=\"book\"></span><span class=\"book\"></span><span class=\"book\"></span><span class=\"book\"></span>",
+    comics: "<span class=\"comic-panel\"></span><span class=\"comic-panel\"></span>",
+    sleeves: "<span class=\"sleeve\"></span><span class=\"sleeve\"></span>",
+    mystery: "<span class=\"mystery-box\"></span>",
+    request: "<span class=\"request-card\"></span>"
+  };
+  return visuals[type] || visuals.figures;
+}
+
 function productCard(product) {
   const stockLabel = product.stock <= 0 ? "Out of stock" : `${product.stock} in stock`;
   return `
     <article class="product-card">
-      <div class="product-art" aria-hidden="true"><span class="product-symbol">${product.symbol}</span></div>
+      <div class="product-art" aria-hidden="true"><div class="product-visual">${productVisual(product.visual)}</div></div>
       <div class="product-body">
         <span class="tag">${product.tag}</span>
         <h3>${product.name}</h3>
