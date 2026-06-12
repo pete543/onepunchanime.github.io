@@ -2,6 +2,14 @@
 
 Static website for the ISM4300 Project 1 group assignment.
 
+## GitHub Pages
+
+This repository can publish directly from the `main` branch root at:
+
+```text
+https://pete543.github.io/onepunchanime.github.io/
+```
+
 ## Cloudflare Pages
 
 - Build command: leave blank
