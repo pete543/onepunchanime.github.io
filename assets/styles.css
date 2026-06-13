@@ -495,16 +495,14 @@ p {
 .product-art {
   align-items: center;
   aspect-ratio: 16 / 9;
-  background:
-    linear-gradient(135deg, rgba(34, 211, 238, 0.14), rgba(255, 91, 115, 0.1)),
-    linear-gradient(180deg, #111a2d, #08101f);
+  background: #0b1223;
   display: flex;
   justify-content: center;
   overflow: hidden;
   position: relative;
 }
 
-.product-art::before {
+.product-art:has(.product-visual)::before {
   background:
     repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 18px),
     repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 18px);
@@ -512,6 +510,18 @@ p {
   inset: 0;
   opacity: 0.6;
   position: absolute;
+}
+
+.product-photo {
+  height: 100%;
+  object-fit: cover;
+  transition: transform 220ms ease, filter 220ms ease;
+  width: 100%;
+}
+
+.product-card:hover .product-photo {
+  filter: saturate(1.08) contrast(1.03);
+  transform: scale(1.035);
 }
 
 .product-art::after {
