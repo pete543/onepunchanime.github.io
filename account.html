@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="assets/images/one-punch-badge.svg">
+  <link rel="apple-touch-icon" href="assets/images/one-punch-badge.svg">
+  <title>Account | One-Punch Anime Emporium</title>
+  <meta name="description" content="Create or access a One-Punch Anime Emporium customer account for saved contact details, pickup preferences, and special-order follow-up.">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><img src="assets/images/one-punch-badge.svg" alt=""></span><span>One-Punch Anime Emporium</span></a>
+      <nav aria-label="Primary">
+        <ul class="nav-menu" data-menu><li><a href="index.html">Home</a></li><li><a href="catalog.html">Catalog</a></li><li><a href="special-orders.html">Special Orders</a></li><li><a href="locations.html">Locations</a></li><li><a href="contact.html">Contact</a></li><li><a href="resources.html">Resources</a></li></ul>
+      </nav>
+      <div class="nav-actions">
+        <a class="icon-button" href="order.html" aria-label="Cart">Cart <span class="cart-count" data-cart-count>0</span></a>
+        <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" data-menu-toggle>Menu</button>
+      </div>
+    </div>
+  </header>
+  <main id="main">
+    <section class="page-hero">
+      <span class="eyebrow">Customer access</span>
+      <h1>Account</h1>
+      <p>Save pickup details, track special-order requests, and keep a quick profile for store follow-up.</p>
+    </section>
+
+    <section class="section account-shell" data-account-page>
+      <article class="account-status-card">
+        <span class="tag">Profile</span>
+        <h2 data-account-heading>Welcome back.</h2>
+        <p data-account-summary>Log in or create an account to personalize your storefront visit.</p>
+        <div class="account-mini-grid">
+          <div><strong data-account-name>Guest</strong><span>Name</span></div>
+          <div><strong data-account-email>Not signed in</strong><span>Email</span></div>
+          <div><strong data-account-pickup>Any location</strong><span>Pickup preference</span></div>
+        </div>
+        <button class="button light" type="button" data-sign-out>Sign Out</button>
+      </article>
+
+      <div class="auth-grid">
+        <article class="card auth-card">
+          <span class="eyebrow">Create account</span>
+          <h2>Start a customer profile.</h2>
+          <form class="form-grid auth-form" data-create-account>
+            <label>Full name
+              <input class="field" type="text" name="name" autocomplete="name" placeholder="Alex Collector" required>
+            </label>
+            <label>Email
+              <input class="field" type="email" name="email" autocomplete="email" placeholder="alex@example.com" required>
+            </label>
+            <label>Preferred pickup
+              <select class="select" name="pickup">
+                <option>Floral Avenue</option>
+                <option>Glenwood Avenue</option>
+                <option>Talbert Drive</option>
+              </select>
+            </label>
+            <label>Password
+              <input class="field" type="password" name="password" autocomplete="new-password" placeholder="Create password" required>
+            </label>
+            <button class="button full" type="submit">Create Account</button>
+          </form>
+        </article>
+
+        <article class="card auth-card">
+          <span class="eyebrow">Log in</span>
+          <h2>Access saved details.</h2>
+          <form class="form-grid auth-form" data-login-account>
+            <label>Email
+              <input class="field" type="email" name="email" autocomplete="email" placeholder="alex@example.com" required>
+            </label>
+            <label>Password
+              <input class="field" type="password" name="password" autocomplete="current-password" placeholder="Password" required>
+            </label>
+            <button class="button coral full" type="submit">Log In</button>
+          </form>
+          <p class="tiny">Use any email and password to preview the account experience.</p>
+        </article>
+      </div>
+
+      <p class="notice" data-account-notice></p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div><h3>One-Punch Anime Emporium</h3><p>Rare figures, manga, comics, and special-order anime collectibles for Chico-area fans.</p></div>
+      <div class="footer-links"><strong>Shop</strong><a href="catalog.html">Catalog</a><a href="order.html">Order</a><a href="special-orders.html">Special Orders</a></div>
+      <div class="footer-links"><strong>Help</strong><a href="locations.html">Locations</a><a href="resources.html">Resources</a></div>
+    </div>
+  </footer>
+</body>
+</html>

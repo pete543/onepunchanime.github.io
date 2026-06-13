@@ -184,6 +184,20 @@ function cart() {
   return JSON.parse(localStorage.getItem("ope-cart") || "[]");
 }
 
+function account() {
+  return JSON.parse(localStorage.getItem("ope-account") || "null");
+}
+
+function saveAccount(profile) {
+  localStorage.setItem("ope-account", JSON.stringify(profile));
+  updateAccountNav();
+}
+
+function clearAccount() {
+  localStorage.removeItem("ope-account");
+  updateAccountNav();
+}
+
 function saveCart(items) {
   localStorage.setItem("ope-cart", JSON.stringify(items));
   updateCartCount();
@@ -193,6 +207,14 @@ function updateCartCount() {
   const count = cart().reduce((sum, item) => sum + item.qty, 0);
   document.querySelectorAll("[data-cart-count]").forEach((el) => {
     el.textContent = String(count);
+  });
+}
+
+function updateAccountNav() {
+  const profile = account();
+  document.querySelectorAll("[data-account-link]").forEach((link) => {
+    link.textContent = profile?.name ? profile.name.split(" ")[0] : "Account";
+    link.setAttribute("aria-label", profile?.name ? `Account for ${profile.name}` : "Account");
   });
 }
 
@@ -319,6 +341,81 @@ function setupForms() {
   });
 }
 
+function showAccountNotice(message) {
+  const notice = document.querySelector("[data-account-notice]");
+  if (!notice) return;
+  notice.textContent = message;
+  notice.classList.add("show");
+}
+
+function renderAccountPage() {
+  const root = document.querySelector("[data-account-page]");
+  if (!root) return;
+
+  const profile = account();
+  const signedIn = Boolean(profile);
+  const heading = root.querySelector("[data-account-heading]");
+  const summary = root.querySelector("[data-account-summary]");
+  const name = root.querySelector("[data-account-name]");
+  const email = root.querySelector("[data-account-email]");
+  const pickup = root.querySelector("[data-account-pickup]");
+  const signOut = root.querySelector("[data-sign-out]");
+
+  if (heading) heading.textContent = signedIn ? `Hi, ${profile.name.split(" ")[0]}.` : "Welcome back.";
+  if (summary) summary.textContent = signedIn ? "Your profile is ready for pickup requests and special-order follow-up." : "Log in or create an account to personalize your storefront visit.";
+  if (name) name.textContent = profile?.name || "Guest";
+  if (email) email.textContent = profile?.email || "Not signed in";
+  if (pickup) pickup.textContent = profile?.pickup || "Any location";
+  if (signOut) signOut.disabled = !signedIn;
+}
+
+function setupAccountPage() {
+  const root = document.querySelector("[data-account-page]");
+  if (!root) return;
+
+  const createForm = root.querySelector("[data-create-account]");
+  const loginForm = root.querySelector("[data-login-account]");
+  const signOut = root.querySelector("[data-sign-out]");
+
+  createForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const data = new FormData(createForm);
+    saveAccount({
+      name: String(data.get("name") || "Customer").trim(),
+      email: String(data.get("email") || "").trim(),
+      pickup: String(data.get("pickup") || "Any location"),
+      createdAt: new Date().toISOString()
+    });
+    createForm.reset();
+    renderAccountPage();
+    showAccountNotice("Account created. Your profile is saved in this browser.");
+  });
+
+  loginForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const data = new FormData(loginForm);
+    const email = String(data.get("email") || "").trim();
+    const existing = account();
+    saveAccount({
+      name: existing?.email === email ? existing.name : "Returning Fan",
+      email,
+      pickup: existing?.email === email ? existing.pickup : "Any location",
+      createdAt: existing?.createdAt || new Date().toISOString()
+    });
+    loginForm.reset();
+    renderAccountPage();
+    showAccountNotice("Signed in. Your account status is active for this browser session.");
+  });
+
+  signOut?.addEventListener("click", () => {
+    clearAccount();
+    renderAccountPage();
+    showAccountNotice("Signed out. You can log in again whenever you are ready.");
+  });
+
+  renderAccountPage();
+}
+
 function setupOrder() {
   const node = document.querySelector("[data-order-summary]");
   if (!node) return;
@@ -370,6 +467,21 @@ function setupNavigation() {
   const toggle = document.querySelector("[data-menu-toggle]");
   const menu = document.querySelector("[data-menu]");
   const current = location.pathname.split("/").pop() || "index.html";
+  const navActions = document.querySelector(".nav-actions");
+
+  if (navActions && !navActions.querySelector("[data-account-link]")) {
+    const accountLink = document.createElement("a");
+    accountLink.className = "icon-button account-button";
+    accountLink.href = "account.html";
+    accountLink.dataset.accountLink = "";
+    accountLink.textContent = "Account";
+    navActions.prepend(accountLink);
+  }
+
+  const accountLink = document.querySelector("[data-account-link]");
+  if (accountLink && current === "account.html") {
+    accountLink.setAttribute("aria-current", "page");
+  }
 
   document.querySelectorAll(".nav-menu a").forEach((link) => {
     const href = link.getAttribute("href");
@@ -391,5 +503,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupCatalog();
   setupCategoryPages();
   setupForms();
+  setupAccountPage();
   setupOrder();
+  updateAccountNav();
 });
