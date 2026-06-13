@@ -7,7 +7,7 @@ const products = [
     stock: 4,
     tag: "Rare Find",
     visual: "figures",
-    image: "https://source.unsplash.com/random/900x700/?collectible,figure&sig=ope-fig-001",
+    image: "assets/images/products/fig-001.png",
     imageAlt: "Collectible figure displayed on a shelf",
     description: "A premium shelf-ready figure with a dynamic action pose and collector box."
   },
@@ -19,7 +19,7 @@ const products = [
     stock: 10,
     tag: "Local Favorite",
     visual: "figures",
-    image: "https://source.unsplash.com/random/900x700/?toy,statue,display&sig=ope-fig-002",
+    image: "assets/images/products/fig-002.png",
     imageAlt: "Small display statue on a collector shelf",
     description: "Compact display statue for desks, dorm rooms, and starter collections."
   },
@@ -31,7 +31,7 @@ const products = [
     stock: 8,
     tag: "Action Figure",
     visual: "figures",
-    image: "https://source.unsplash.com/random/900x700/?action,figure,collectible&sig=ope-fig-003",
+    image: "assets/images/products/fig-003.png",
     imageAlt: "Boxed action figure collectible",
     description: "A mid-size collector figure with display base and bright shelf presence."
   },
@@ -43,7 +43,7 @@ const products = [
     stock: 5,
     tag: "Import",
     visual: "figures",
-    image: "https://source.unsplash.com/random/900x700/?swordsman,figure,model&sig=ope-fig-004",
+    image: "assets/images/products/fig-004.png",
     imageAlt: "Character statue with display base",
     description: "A compact swordsman display piece for collectors building a battle shelf."
   },
@@ -55,7 +55,7 @@ const products = [
     stock: 16,
     tag: "Bundle",
     visual: "manga",
-    image: "https://source.unsplash.com/random/900x700/?manga,books&sig=ope-man-001",
+    image: "assets/images/products/man-001.png",
     imageAlt: "Manga volumes lined up on a shelf",
     description: "A first-volume set for readers trying a new action series."
   },
@@ -67,7 +67,7 @@ const products = [
     stock: 7,
     tag: "Staff Pick",
     visual: "manga",
-    image: "https://source.unsplash.com/random/900x700/?bookstore,manga,shelf&sig=ope-man-002",
+    image: "assets/images/products/man-002.png",
     imageAlt: "Books and manga arranged in a store display",
     description: "Three cozy manga volumes selected by the Chico store team."
   },
@@ -79,7 +79,7 @@ const products = [
     stock: 9,
     tag: "Volume Pack",
     visual: "manga",
-    image: "https://source.unsplash.com/random/900x700/?graphic,novels,books&sig=ope-man-003",
+    image: "assets/images/products/man-003.png",
     imageAlt: "Stack of graphic novels and manga books",
     description: "A multi-volume pack for readers starting a longer adventure storyline."
   },
@@ -91,7 +91,7 @@ const products = [
     stock: 6,
     tag: "Bundle",
     visual: "manga",
-    image: "https://source.unsplash.com/random/900x700/?comic,bookstore,shelf&sig=ope-man-004",
+    image: "assets/images/products/man-004.png",
     imageAlt: "Colorful books on a retail shelf",
     description: "A lighthearted bundle chosen for quick reads and weekend recommendations."
   },
@@ -103,7 +103,7 @@ const products = [
     stock: 2,
     tag: "Low Stock",
     visual: "comics",
-    image: "https://source.unsplash.com/random/900x700/?comic,books&sig=ope-com-001",
+    image: "assets/images/products/com-001.png",
     imageAlt: "Comic books stacked together",
     description: "Hard-to-find import comics sourced through specialty distributors."
   },
@@ -115,7 +115,7 @@ const products = [
     stock: 3,
     tag: "Limited Cover",
     visual: "comics",
-    image: "https://source.unsplash.com/random/900x700/?comics,collection&sig=ope-com-002",
+    image: "assets/images/products/com-002.png",
     imageAlt: "Comic book collection on display",
     description: "A small run of alternate-cover comics for collectors who like display copies."
   },
@@ -127,7 +127,7 @@ const products = [
     stock: 25,
     tag: "Accessory",
     visual: "sleeves",
-    image: "https://source.unsplash.com/random/900x700/?trading,cards,sleeves&sig=ope-acc-001",
+    image: "assets/images/products/acc-001.png",
     imageAlt: "Card sleeves and collector accessories",
     description: "Protective sleeves for manga, comics, trading cards, and small prints."
   },
@@ -139,7 +139,7 @@ const products = [
     stock: 18,
     tag: "Cosplay",
     visual: "sleeves",
-    image: "https://source.unsplash.com/random/900x700/?cosplay,accessory&sig=ope-acc-002",
+    image: "assets/images/products/acc-002.png",
     imageAlt: "Cosplay accessories arranged on a table",
     description: "A display-friendly cosplay accessory for costumes, photos, and shelf styling."
   },
@@ -151,7 +151,7 @@ const products = [
     stock: 2,
     tag: "Low Stock",
     visual: "sleeves",
-    image: "https://source.unsplash.com/random/900x700/?display,sword,prop&sig=ope-acc-003",
+    image: "assets/images/products/acc-003.png",
     imageAlt: "Decorative prop sword on display",
     description: "A decorative prop sword for display, conventions, and themed collections."
   },
@@ -163,7 +163,7 @@ const products = [
     stock: 6,
     tag: "New",
     visual: "mystery",
-    image: "https://source.unsplash.com/random/900x700/?gift,box,collectibles&sig=ope-new-001",
+    image: "assets/images/products/new-001.png",
     imageAlt: "Gift box with collectible items",
     description: "A changing mix of figures, art cards, snacks, and surprise shelf finds."
   },
@@ -175,7 +175,7 @@ const products = [
     stock: 4,
     tag: "New",
     visual: "mystery",
-    image: "https://source.unsplash.com/random/900x700/?model,ship,display&sig=ope-new-002",
+    image: "assets/images/products/new-002.png",
     imageAlt: "Small model ship displayed on a shelf",
     description: "A playful display model for fans who like ships, crews, and shelf scenes."
   },
@@ -187,7 +187,7 @@ const products = [
     stock: 99,
     tag: "Request",
     visual: "request",
-    image: "https://source.unsplash.com/random/900x700/?store,counter,notebook&sig=ope-pre-001",
+    image: "assets/images/products/pre-001.png",
     imageAlt: "Store counter with order notes",
     description: "A deposit for rare items requested through the special-order desk."
   }
