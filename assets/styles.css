@@ -494,7 +494,7 @@ p {
 
 .product-art {
   align-items: center;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1 / 1;
   background: #0b1223;
   display: flex;
   justify-content: center;

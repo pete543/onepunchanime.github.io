@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const { PNG } = require("pngjs");
 
-const sourcePath = path.join(__dirname, "..", "assets", "images", "emporium-hero.png");
+const sourcePath = path.join(__dirname, "..", "assets", "images", "product-sheet.png");
 const outDir = path.join(__dirname, "..", "assets", "images", "products");
 
 const products = [
@@ -12,55 +12,31 @@ const products = [
   "acc-003", "new-001", "new-002", "pre-001"
 ];
 
-const crops = [
-  [0.58, 0.18, 0.19, 0.28],
-  [0.72, 0.17, 0.18, 0.30],
-  [0.86, 0.12, 0.12, 0.40],
-  [0.62, 0.42, 0.20, 0.28],
-  [0.30, 0.30, 0.22, 0.28],
-  [0.40, 0.28, 0.22, 0.32],
-  [0.48, 0.27, 0.24, 0.30],
-  [0.34, 0.50, 0.22, 0.30],
-  [0.50, 0.45, 0.26, 0.30],
-  [0.58, 0.08, 0.30, 0.22],
-  [0.83, 0.46, 0.12, 0.32],
-  [0.92, 0.42, 0.08, 0.38],
-  [0.73, 0.56, 0.22, 0.24],
-  [0.17, 0.56, 0.28, 0.26],
-  [0.56, 0.66, 0.26, 0.20],
-  [0.68, 0.54, 0.22, 0.26]
-];
-
-const outWidth = 720;
-const outHeight = 405;
-
-function clamp(value, min, max) {
-  return Math.max(min, Math.min(max, value));
-}
+const outSize = 720;
 
 function sample(source, x, y) {
-  const sx = clamp(Math.round(x), 0, source.width - 1);
-  const sy = clamp(Math.round(y), 0, source.height - 1);
+  const sx = Math.max(0, Math.min(source.width - 1, Math.round(x)));
+  const sy = Math.max(0, Math.min(source.height - 1, Math.round(y)));
   return (source.width * sy + sx) << 2;
 }
 
-function makeImage(source, crop) {
-  const [xRatio, yRatio, wRatio, hRatio] = crop;
-  const x = Math.round(source.width * xRatio);
-  const y = Math.round(source.height * yRatio);
-  const w = Math.round(source.width * wRatio);
-  const h = Math.round(source.height * hRatio);
-  const out = new PNG({ width: outWidth, height: outHeight });
+function cropCell(source, index) {
+  const col = index % 4;
+  const row = Math.floor(index / 4);
+  const cell = Math.floor(Math.min(source.width, source.height) / 4);
+  const gutter = Math.max(2, Math.round(cell * 0.012));
+  const x = col * cell + gutter;
+  const y = row * cell + gutter;
+  const size = cell - gutter * 2;
+  const out = new PNG({ width: outSize, height: outSize });
 
-  for (let oy = 0; oy < outHeight; oy += 1) {
-    for (let ox = 0; ox < outWidth; ox += 1) {
-      const sx = x + (ox / outWidth) * w;
-      const sy = y + (oy / outHeight) * h;
-      const src = sample(source, sx, sy);
-      const dst = (outWidth * oy + ox) << 2;
-      out.data[dst] = Math.min(255, Math.round(source.data[src] * 1.04));
-      out.data[dst + 1] = Math.min(255, Math.round(source.data[src + 1] * 1.04));
-      out.data[dst + 2] = Math.min(255, Math.round(source.data[src + 2] * 1.06));
+  for (let oy = 0; oy < outSize; oy += 1) {
+    for (let ox = 0; ox < outSize; ox += 1) {
+      const src = sample(source, x + (ox / outSize) * size, y + (oy / outSize) * size);
+      const dst = (outSize * oy + ox) << 2;
+      out.data[dst] = source.data[src];
+      out.data[dst + 1] = source.data[src + 1];
+      out.data[dst + 2] = source.data[src + 2];
       out.data[dst + 3] = 255;
     }
   }
@@ -72,8 +48,8 @@ fs.mkdirSync(outDir, { recursive: true });
 const source = PNG.sync.read(fs.readFileSync(sourcePath));
 
 products.forEach((id, index) => {
-  const image = makeImage(source, crops[index]);
+  const image = cropCell(source, index);
   fs.writeFileSync(path.join(outDir, `${id}.png`), PNG.sync.write(image, { colorType: 6 }));
 });
 
-console.log(`Generated ${products.length} product images.`);
+console.log(`Generated ${products.length} catalog product images.`);
