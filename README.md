@@ -29,6 +29,7 @@ Then visit `http://localhost:8788`.
 ## Pages Included
 
 - Home
+- Account
 - About
 - Catalog
 - Figures

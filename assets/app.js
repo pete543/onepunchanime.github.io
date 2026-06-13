@@ -47,7 +47,7 @@ const products = [
     stock: 16,
     tag: "Bundle",
     visual: "manga",
-    description: "A curated first-volume set for readers exploring high-energy action series."
+    description: "A first-volume set for readers trying a new action series."
   },
   {
     id: "man-002",
@@ -137,7 +137,7 @@ const products = [
     stock: 6,
     tag: "New",
     visual: "mystery",
-    description: "A rotating mix of figures, art cards, snacks, and surprise shelf finds."
+    description: "A changing mix of figures, art cards, snacks, and surprise shelf finds."
   },
   {
     id: "new-002",
@@ -157,7 +157,7 @@ const products = [
     stock: 99,
     tag: "Request",
     visual: "request",
-    description: "A placeholder deposit for hard-to-find items requested by customers."
+    description: "A deposit for rare items requested through the special-order desk."
   }
 ];
 
@@ -213,7 +213,8 @@ function updateCartCount() {
 function updateAccountNav() {
   const profile = account();
   document.querySelectorAll("[data-account-link]").forEach((link) => {
-    link.textContent = profile?.name ? profile.name.split(" ")[0] : "Account";
+    const greeting = profile?.name ? `Hello, ${profile.name.split(" ")[0]}` : "Hello, sign in";
+    link.innerHTML = `<span class="account-kicker">${greeting}</span><span>Account</span>`;
     link.setAttribute("aria-label", profile?.name ? `Account for ${profile.name}` : "Account");
   });
 }
@@ -348,25 +349,36 @@ function showAccountNotice(message) {
   notice.classList.add("show");
 }
 
+function nameFromEmail(email) {
+  const local = email.split("@")[0] || "Customer";
+  return local
+    .replace(/[._-]+/g, " ")
+    .split(" ")
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ") || "Customer";
+}
+
 function renderAccountPage() {
   const root = document.querySelector("[data-account-page]");
   if (!root) return;
 
   const profile = account();
   const signedIn = Boolean(profile);
+  const signedOutPanel = root.querySelector("[data-signed-out]");
+  const signedInPanel = root.querySelector("[data-signed-in]");
   const heading = root.querySelector("[data-account-heading]");
-  const summary = root.querySelector("[data-account-summary]");
   const name = root.querySelector("[data-account-name]");
   const email = root.querySelector("[data-account-email]");
   const pickup = root.querySelector("[data-account-pickup]");
-  const signOut = root.querySelector("[data-sign-out]");
 
-  if (heading) heading.textContent = signedIn ? `Hi, ${profile.name.split(" ")[0]}.` : "Welcome back.";
-  if (summary) summary.textContent = signedIn ? "Your profile is ready for pickup requests and special-order follow-up." : "Log in or create an account to personalize your storefront visit.";
-  if (name) name.textContent = profile?.name || "Guest";
+  signedOutPanel?.classList.toggle("is-hidden", signedIn);
+  signedInPanel?.classList.toggle("is-hidden", !signedIn);
+
+  if (heading) heading.textContent = signedIn ? `Hello, ${profile.name.split(" ")[0]}.` : "Hello.";
+  if (name) name.textContent = profile?.name || "Customer";
   if (email) email.textContent = profile?.email || "Not signed in";
   if (pickup) pickup.textContent = profile?.pickup || "Any location";
-  if (signOut) signOut.disabled = !signedIn;
 }
 
 function setupAccountPage() {
@@ -388,7 +400,7 @@ function setupAccountPage() {
     });
     createForm.reset();
     renderAccountPage();
-    showAccountNotice("Account created. Your profile is saved in this browser.");
+    showAccountNotice("Account created. You're signed in.");
   });
 
   loginForm?.addEventListener("submit", (event) => {
@@ -397,20 +409,20 @@ function setupAccountPage() {
     const email = String(data.get("email") || "").trim();
     const existing = account();
     saveAccount({
-      name: existing?.email === email ? existing.name : "Returning Fan",
+      name: existing?.email === email ? existing.name : nameFromEmail(email),
       email,
       pickup: existing?.email === email ? existing.pickup : "Any location",
       createdAt: existing?.createdAt || new Date().toISOString()
     });
     loginForm.reset();
     renderAccountPage();
-    showAccountNotice("Signed in. Your account status is active for this browser session.");
+    showAccountNotice("You're signed in.");
   });
 
   signOut?.addEventListener("click", () => {
     clearAccount();
     renderAccountPage();
-    showAccountNotice("Signed out. You can log in again whenever you are ready.");
+    showAccountNotice("You're signed out.");
   });
 
   renderAccountPage();

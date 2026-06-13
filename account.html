@@ -6,7 +6,7 @@
   <link rel="icon" type="image/svg+xml" href="assets/images/one-punch-badge.svg">
   <link rel="apple-touch-icon" href="assets/images/one-punch-badge.svg">
   <title>Account | One-Punch Anime Emporium</title>
-  <meta name="description" content="Create or access a One-Punch Anime Emporium customer account for saved contact details, pickup preferences, and special-order follow-up.">
+  <meta name="description" content="Sign in to One-Punch Anime Emporium to manage orders, pickup details, and special-order requests.">
   <link rel="stylesheet" href="assets/styles.css">
   <script src="assets/app.js" defer></script>
 </head>
@@ -25,64 +25,73 @@
     </div>
   </header>
   <main id="main">
-    <section class="page-hero">
-      <span class="eyebrow">Customer access</span>
-      <h1>Account</h1>
-      <p>Save pickup details, track special-order requests, and keep a quick profile for store follow-up.</p>
-    </section>
-
     <section class="section account-shell" data-account-page>
-      <article class="account-status-card">
-        <span class="tag">Profile</span>
-        <h2 data-account-heading>Welcome back.</h2>
-        <p data-account-summary>Log in or create an account to personalize your storefront visit.</p>
-        <div class="account-mini-grid">
-          <div><strong data-account-name>Guest</strong><span>Name</span></div>
-          <div><strong data-account-email>Not signed in</strong><span>Email</span></div>
-          <div><strong data-account-pickup>Any location</strong><span>Pickup preference</span></div>
-        </div>
-        <button class="button light" type="button" data-sign-out>Sign Out</button>
-      </article>
+      <div class="signin-layout" data-signed-out>
+        <article class="signin-card">
+          <h1>Sign in</h1>
+          <form class="auth-form" data-login-account>
+            <label>Email or mobile phone number
+              <input class="field" type="email" name="email" autocomplete="email" required>
+            </label>
+            <label>Password
+              <input class="field" type="password" name="password" autocomplete="current-password" required>
+            </label>
+            <button class="button retail-button" type="submit">Continue</button>
+          </form>
+          <p class="fineprint">By continuing, you agree to the store's conditions of use and privacy notice.</p>
+          <a class="help-link" href="contact.html">Need help?</a>
+        </article>
 
-      <div class="auth-grid">
-        <article class="card auth-card">
-          <span class="eyebrow">Create account</span>
-          <h2>Start a customer profile.</h2>
+        <div class="new-customer-divider"><span>New to One-Punch Anime Emporium?</span></div>
+
+        <article class="create-account-card">
+          <h2>Create account</h2>
           <form class="form-grid auth-form" data-create-account>
-            <label>Full name
-              <input class="field" type="text" name="name" autocomplete="name" placeholder="Alex Collector" required>
+            <label>Your name
+              <input class="field" type="text" name="name" autocomplete="name" required>
             </label>
             <label>Email
-              <input class="field" type="email" name="email" autocomplete="email" placeholder="alex@example.com" required>
+              <input class="field" type="email" name="email" autocomplete="email" required>
             </label>
-            <label>Preferred pickup
+            <label>Password
+              <input class="field" type="password" name="password" autocomplete="new-password" required>
+            </label>
+            <label>Preferred pickup store
               <select class="select" name="pickup">
                 <option>Floral Avenue</option>
                 <option>Glenwood Avenue</option>
                 <option>Talbert Drive</option>
               </select>
             </label>
-            <label>Password
-              <input class="field" type="password" name="password" autocomplete="new-password" placeholder="Create password" required>
-            </label>
-            <button class="button full" type="submit">Create Account</button>
+            <button class="button light full" type="submit">Create your account</button>
           </form>
         </article>
+      </div>
 
-        <article class="card auth-card">
-          <span class="eyebrow">Log in</span>
-          <h2>Access saved details.</h2>
-          <form class="form-grid auth-form" data-login-account>
-            <label>Email
-              <input class="field" type="email" name="email" autocomplete="email" placeholder="alex@example.com" required>
-            </label>
-            <label>Password
-              <input class="field" type="password" name="password" autocomplete="current-password" placeholder="Password" required>
-            </label>
-            <button class="button coral full" type="submit">Log In</button>
-          </form>
-          <p class="tiny">Use any email and password to preview the account experience.</p>
-        </article>
+      <div class="account-dashboard is-hidden" data-signed-in>
+        <div class="dashboard-heading">
+          <div>
+            <span class="eyebrow">Your account</span>
+            <h1 data-account-heading>Hello.</h1>
+            <p>Manage orders, pickup details, and special requests from one place.</p>
+          </div>
+          <button class="button light" type="button" data-sign-out>Sign Out</button>
+        </div>
+
+        <div class="account-profile-strip">
+          <div><strong data-account-name>Customer</strong><span>Name</span></div>
+          <div><strong data-account-email>Email</strong><span>Email</span></div>
+          <div><strong data-account-pickup>Any location</strong><span>Pickup store</span></div>
+        </div>
+
+        <div class="account-tile-grid">
+          <a class="account-tile" href="order.html"><strong>Your Orders</strong><span>Review cart items and pickup totals.</span></a>
+          <a class="account-tile" href="special-orders.html"><strong>Special Orders</strong><span>Request rare items and import finds.</span></a>
+          <a class="account-tile" href="locations.html"><strong>Your Addresses</strong><span>Choose the store closest to you.</span></a>
+          <a class="account-tile" href="catalog.html"><strong>Buy Again</strong><span>Jump back into the current catalog.</span></a>
+          <a class="account-tile" href="resources.html"><strong>Membership Perks</strong><span>See store policies and collector resources.</span></a>
+          <a class="account-tile" href="contact.html"><strong>Customer Service</strong><span>Contact the store team.</span></a>
+        </div>
       </div>
 
       <p class="notice" data-account-notice></p>
