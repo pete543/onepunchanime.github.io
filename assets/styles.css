@@ -1,23 +1,23 @@
-@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 
 :root {
-  --ink: #fff7e8;
-  --ink-soft: #ddcdb6;
-  --ink-muted: #a9977e;
-  --paper: #120c09;
-  --surface: #1b1512;
-  --surface-2: #241a16;
-  --surface-3: #33231c;
-  --line: rgba(246, 198, 104, 0.2);
-  --line-strong: rgba(230, 57, 70, 0.42);
-  --teal: #e63946;
-  --teal-dark: #b91c1c;
-  --coral: #ff7a3d;
-  --gold: #f6c65b;
+  --ink: #f8efe4;
+  --ink-soft: #d8c7b4;
+  --ink-muted: #a99784;
+  --paper: #14110f;
+  --surface: #201a16;
+  --surface-2: #2a211b;
+  --surface-3: #382a22;
+  --line: rgba(232, 196, 134, 0.24);
+  --line-strong: rgba(221, 74, 65, 0.42);
+  --teal: #dd4a41;
+  --teal-dark: #b8322c;
+  --coral: #e97d43;
+  --gold: #e8c486;
   --violet: #8b5a3c;
-  --green: #84c98f;
-  --cream: #fff1d6;
-  --shadow: 0 24px 62px rgba(0, 0, 0, 0.42);
+  --green: #8fd39b;
+  --cream: #fff6ea;
+  --shadow: 0 22px 54px rgba(0, 0, 0, 0.36);
   --radius: 8px;
 }
 
@@ -36,9 +36,9 @@ html {
 body {
   margin: 0;
   background:
-    radial-gradient(circle at 14% 0%, rgba(230, 57, 70, 0.18), transparent 30rem),
-    radial-gradient(circle at 88% 10%, rgba(246, 198, 91, 0.1), transparent 26rem),
-    linear-gradient(180deg, #17100c 0%, #120c09 44%, #0d0907 100%);
+    radial-gradient(circle at 14% 0%, rgba(221, 74, 65, 0.12), transparent 30rem),
+    radial-gradient(circle at 88% 10%, rgba(232, 196, 134, 0.1), transparent 26rem),
+    linear-gradient(180deg, #181411 0%, #14110f 44%, #100d0b 100%);
   min-width: 320px;
 }
 
@@ -71,7 +71,7 @@ img {
 }
 
 .site-header {
-  background: rgba(18, 12, 9, 0.92);
+  background: rgba(20, 17, 15, 0.94);
   border-bottom: 1px solid var(--line);
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.22);
   position: sticky;
@@ -118,12 +118,11 @@ img {
 }
 
 .brand span:last-child {
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: clamp(1.08rem, 1.7vw, 1.4rem);
+  font-family: "Inter", sans-serif;
+  font-size: clamp(0.98rem, 1.35vw, 1.22rem);
   font-weight: 800;
-  letter-spacing: 0.025em;
-  line-height: 0.94;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  line-height: 1.1;
 }
 
 .nav-menu {
@@ -138,10 +137,10 @@ img {
 .nav-menu a {
   color: var(--ink-soft);
   display: inline-flex;
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 1rem;
-  font-weight: 800;
-  letter-spacing: 0.055em;
+  font-family: "Inter", sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0;
   padding: 0.55rem 0.7rem;
   position: relative;
   text-decoration: none;
@@ -184,12 +183,12 @@ img {
   border: 1px solid transparent;
   cursor: pointer;
   display: inline-flex;
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 1rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.94rem;
   font-weight: 700;
   gap: 0.45rem;
   justify-content: center;
-  letter-spacing: 0.055em;
+  letter-spacing: 0;
   min-height: 2.45rem;
   text-decoration: none;
   transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, color 160ms ease;
@@ -197,7 +196,7 @@ img {
 
 .icon-button,
 .menu-toggle {
-  background: rgba(36, 26, 22, 0.92);
+  background: rgba(42, 33, 27, 0.92);
   border-color: var(--line);
   color: var(--ink);
   padding: 0 0.78rem;
@@ -260,7 +259,7 @@ main {
 }
 
 .hero {
-  background: #140d0a;
+  background: #15110f;
   color: #fff;
   min-height: 520px;
   overflow: hidden;
@@ -269,8 +268,8 @@ main {
 
 .hero::before {
   background:
-    linear-gradient(90deg, rgba(18, 12, 9, 0.96) 0%, rgba(18, 12, 9, 0.72) 40%, rgba(18, 12, 9, 0.22) 76%),
-    linear-gradient(180deg, rgba(18, 12, 9, 0.08) 0%, rgba(18, 12, 9, 0.8) 100%);
+    linear-gradient(90deg, rgba(20, 17, 15, 0.95) 0%, rgba(20, 17, 15, 0.68) 40%, rgba(20, 17, 15, 0.2) 76%),
+    linear-gradient(180deg, rgba(20, 17, 15, 0.08) 0%, rgba(20, 17, 15, 0.72) 100%);
   content: "";
   inset: 0;
   position: absolute;
@@ -279,8 +278,8 @@ main {
 
 .hero::after {
   background:
-    linear-gradient(90deg, rgba(246, 198, 91, 0.13), transparent 40%),
-    linear-gradient(180deg, transparent 72%, rgba(230, 57, 70, 0.12));
+    linear-gradient(90deg, rgba(232, 196, 134, 0.1), transparent 40%),
+    linear-gradient(180deg, transparent 72%, rgba(221, 74, 65, 0.08));
   content: "";
   inset: 0;
   mix-blend-mode: soft-light;
@@ -309,10 +308,10 @@ main {
 .eyebrow {
   color: var(--gold);
   display: inline-flex;
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 0.95rem;
   font-weight: 800;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -326,27 +325,26 @@ h3 {
 
 h1,
 h2 {
-  font-family: "Barlow Condensed", sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.025em;
-  text-transform: uppercase;
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0;
 }
 
 h1 {
-  font-size: clamp(2.9rem, 5.8vw, 5.25rem);
-  max-width: 680px;
-  text-shadow: 0 14px 38px rgba(0, 0, 0, 0.55);
+  font-size: clamp(2.35rem, 4.8vw, 4.3rem);
+  max-width: 760px;
+  text-shadow: 0 12px 34px rgba(0, 0, 0, 0.5);
 }
 
 h2 {
-  font-size: clamp(1.75rem, 3.6vw, 3.15rem);
+  font-size: clamp(1.55rem, 3vw, 2.55rem);
 }
 
 h3 {
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 1.18rem;
+  font-family: "Inter", sans-serif;
+  font-size: 1.08rem;
   font-weight: 700;
-  letter-spacing: 0.025em;
+  letter-spacing: 0;
 }
 
 p {
@@ -385,7 +383,7 @@ p {
 }
 
 .page-hero h1 {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-size: clamp(2.05rem, 4.7vw, 3.55rem);
   max-width: 920px;
 }
 
@@ -435,7 +433,7 @@ p {
 .card,
 .product-card,
 .stat {
-  background: linear-gradient(180deg, rgba(42, 30, 24, 0.96), rgba(24, 17, 14, 0.96));
+  background: linear-gradient(180deg, rgba(44, 35, 29, 0.96), rgba(25, 21, 18, 0.96));
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -477,8 +475,9 @@ p {
 .stat strong {
   color: var(--gold);
   display: block;
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 1.8rem;
+  font-family: "Inter", sans-serif;
+  font-size: 1.55rem;
+  font-weight: 800;
   line-height: 1;
 }
 
@@ -687,19 +686,19 @@ p {
 
 .price {
   color: var(--cream);
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 1.18rem;
-  font-weight: 700;
+  font-family: "Inter", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
 }
 
 .tag,
 .stock {
   border: 1px solid var(--line);
   display: inline-flex;
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 0.8rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0;
   padding: 0.14rem 0.42rem;
   width: fit-content;
 }
@@ -751,7 +750,7 @@ p {
 .account-tile,
 .account-profile-strip,
 .dashboard-heading {
-  background: linear-gradient(180deg, rgba(42, 30, 24, 0.96), rgba(24, 17, 14, 0.96));
+  background: linear-gradient(180deg, rgba(44, 35, 29, 0.96), rgba(25, 21, 18, 0.96));
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -765,13 +764,13 @@ p {
 }
 
 .signin-card h1 {
-  font-size: clamp(2.1rem, 4vw, 3rem);
+  font-size: clamp(1.85rem, 3.4vw, 2.55rem);
   text-shadow: none;
 }
 
 .create-account-card h2,
 .dashboard-heading h1 {
-  font-size: clamp(1.65rem, 3vw, 2.45rem);
+  font-size: clamp(1.45rem, 2.7vw, 2.15rem);
 }
 
 .auth-form {
@@ -922,7 +921,7 @@ p {
 .catalog-summary,
 .newsletter-panel,
 .location-card {
-  background: linear-gradient(180deg, rgba(42, 30, 24, 0.96), rgba(24, 17, 14, 0.96));
+  background: linear-gradient(180deg, rgba(44, 35, 29, 0.96), rgba(25, 21, 18, 0.96));
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -939,8 +938,8 @@ p {
 .catalog-rail strong,
 .catalog-summary strong {
   color: var(--cream);
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 1.1rem;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
 }
 
 .catalog-rail a {
@@ -1050,11 +1049,11 @@ p {
 label {
   color: var(--ink);
   display: grid;
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 1rem;
   font-weight: 700;
   gap: 0.35rem;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
 }
 
 .notice {
@@ -1096,7 +1095,7 @@ label {
 }
 
 .newsletter-panel h2 {
-  font-size: clamp(1.65rem, 3vw, 2.55rem);
+  font-size: clamp(1.45rem, 2.7vw, 2.2rem);
   margin-top: 0.15rem;
 }
 
@@ -1130,7 +1129,7 @@ label {
 }
 
 .location-card h2 {
-  font-size: clamp(1.55rem, 3vw, 2.35rem);
+  font-size: clamp(1.4rem, 2.7vw, 2.1rem);
   margin-top: 0.4rem;
 }
 
@@ -1337,7 +1336,7 @@ th {
   }
 
   .hero::before {
-    background: linear-gradient(180deg, rgba(18, 12, 9, 0.9), rgba(18, 12, 9, 0.48) 52%, rgba(18, 12, 9, 0.92));
+    background: linear-gradient(180deg, rgba(20, 17, 15, 0.9), rgba(20, 17, 15, 0.48) 52%, rgba(20, 17, 15, 0.92));
   }
 
   .hero-content {
@@ -1346,7 +1345,7 @@ th {
   }
 
   h1 {
-    font-size: clamp(2.55rem, 15vw, 4.4rem);
+    font-size: clamp(2.15rem, 11vw, 3.45rem);
   }
 
   .brand span:last-child {
