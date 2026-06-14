@@ -308,6 +308,15 @@ function productCard(product) {
 function renderProducts(list, target) {
   const node = document.querySelector(target);
   if (!node) return;
+  if (!list.length) {
+    node.innerHTML = `
+      <div class="empty-state">
+        <h3>No matches found.</h3>
+        <p>Try a different category, price range, or keyword.</p>
+      </div>
+    `;
+    return;
+  }
   node.innerHTML = list.map(productCard).join("");
   node.querySelectorAll(".product-photo").forEach((image) => {
     image.addEventListener("error", () => {
@@ -334,6 +343,41 @@ function setupCatalog() {
   const category = document.querySelector("[data-category]");
   const sort = document.querySelector("[data-sort]");
   const count = document.querySelector("[data-results-count]");
+  const price = document.querySelector("[data-price-filter]");
+  const stock = document.querySelector("[data-stock-filter]");
+  const fulfillment = document.querySelector("[data-fulfillment-filter]");
+  const railFilters = document.querySelectorAll("[data-category-filter]");
+
+  function matchesPrice(item) {
+    const selected = price?.value || "all";
+    if (selected === "under-25") return item.price < 25;
+    if (selected === "25-50") return item.price >= 25 && item.price <= 50;
+    if (selected === "50-plus") return item.price >= 50;
+    return true;
+  }
+
+  function matchesStock(item) {
+    const selected = stock?.value || "all";
+    if (selected === "in-stock") return item.stock > 0;
+    if (selected === "low-stock") return item.stock > 0 && item.stock <= 4;
+    return true;
+  }
+
+  function deliveryEligible(item) {
+    return item.stock >= 5 && item.category !== "Special Orders" && item.id !== "acc-003";
+  }
+
+  function matchesFulfillment(item) {
+    const selected = fulfillment?.value || "all";
+    if (selected === "delivery") return deliveryEligible(item);
+    return true;
+  }
+
+  function syncRail(selected) {
+    railFilters.forEach((button) => {
+      button.classList.toggle("is-active", button.dataset.categoryFilter === selected);
+    });
+  }
 
   function applyFilters() {
     const term = (search?.value || "").toLowerCase();
@@ -342,7 +386,7 @@ function setupCatalog() {
       const text = `${item.name} ${item.category} ${item.description} ${item.tag}`.toLowerCase();
       const matchTerm = !term || text.includes(term);
       const matchCategory = selected === "All" || item.category === selected;
-      return matchTerm && matchCategory;
+      return matchTerm && matchCategory && matchesPrice(item) && matchesStock(item) && matchesFulfillment(item);
     });
 
     if (sort?.value === "price-asc") sorted.sort((a, b) => a.price - b.price);
@@ -351,10 +395,18 @@ function setupCatalog() {
 
     renderProducts(sorted, "[data-catalog]");
     if (count) count.textContent = `${sorted.length} result${sorted.length === 1 ? "" : "s"}`;
+    syncRail(selected);
   }
 
-  [search, category, sort].filter(Boolean).forEach((control) => {
+  [search, category, sort, price, stock, fulfillment].filter(Boolean).forEach((control) => {
     control.addEventListener("input", applyFilters);
+  });
+
+  railFilters.forEach((button) => {
+    button.addEventListener("click", () => {
+      if (category) category.value = button.dataset.categoryFilter || "All";
+      applyFilters();
+    });
   });
 
   applyFilters();
@@ -377,7 +429,14 @@ function setupForms() {
     form.addEventListener("submit", (event) => {
       event.preventDefault();
       const notice = document.querySelector(form.dataset.confirmForm);
-      if (notice) notice.classList.add("show");
+      if (notice) {
+        const template = form.dataset.confirmMessage;
+        if (template) {
+          const confirmation = `OPE-${Date.now().toString().slice(-6)}`;
+          notice.textContent = template.replace("{number}", confirmation);
+        }
+        notice.classList.add("show");
+      }
       form.reset();
     });
   });

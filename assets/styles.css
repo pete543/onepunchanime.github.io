@@ -939,8 +939,34 @@ p {
   text-decoration: none;
 }
 
-.catalog-rail span {
+.rail-filter {
+  background: transparent;
+  border: 0;
+  color: var(--teal);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  padding: 0.1rem 0;
+  text-align: left;
+}
+
+.rail-filter:hover,
+.rail-filter.is-active {
+  color: #fff;
+}
+
+.rail-filter.is-active::before {
+  color: var(--gold);
+  content: ">";
+  margin-right: 0.35rem;
+}
+
+.catalog-rail label {
   color: var(--ink-soft);
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0;
 }
 
 .rail-divider {
@@ -982,6 +1008,11 @@ p {
   min-height: 2.8rem;
   padding: 0.68rem 0.78rem;
   width: 100%;
+}
+
+.select.compact {
+  min-height: 2.35rem;
+  padding-block: 0.45rem;
 }
 
 .field:focus,
@@ -1028,6 +1059,18 @@ label {
 
 .notice.show {
   display: block;
+}
+
+.empty-state {
+  background: rgba(16, 24, 43, 0.72);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  grid-column: 1 / -1;
+  padding: 1.35rem;
+}
+
+.empty-state h3 {
+  margin-bottom: 0.3rem;
 }
 
 .newsletter-section .section {

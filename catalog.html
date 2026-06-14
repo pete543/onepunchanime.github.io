@@ -20,16 +20,37 @@
     <section class="section catalog-layout">
       <aside class="catalog-rail" aria-label="Browse by category">
         <strong>Browse by category</strong>
-        <a href="figures.html">Figures</a>
-        <a href="manga.html">Manga</a>
-        <a href="comics.html">Comics</a>
-        <a href="new-arrivals.html">New Arrivals</a>
-        <a href="special-orders.html">Special Orders</a>
+        <button class="rail-filter is-active" type="button" data-category-filter="All">All items</button>
+        <button class="rail-filter" type="button" data-category-filter="Figures">Figures</button>
+        <button class="rail-filter" type="button" data-category-filter="Manga">Manga</button>
+        <button class="rail-filter" type="button" data-category-filter="Comics">Comics</button>
+        <button class="rail-filter" type="button" data-category-filter="Accessories">Accessories</button>
+        <button class="rail-filter" type="button" data-category-filter="New Arrivals">New Arrivals</button>
+        <button class="rail-filter" type="button" data-category-filter="Special Orders">Special Orders</button>
         <div class="rail-divider"></div>
         <strong>Shop filters</strong>
-        <span>Price range</span>
-        <span>Availability</span>
-        <span>Pickup or delivery</span>
+        <label>Price range
+          <select class="select compact" data-price-filter>
+            <option value="all">Any price</option>
+            <option value="under-25">Under $25</option>
+            <option value="25-50">$25 to $50</option>
+            <option value="50-plus">$50 and up</option>
+          </select>
+        </label>
+        <label>Availability
+          <select class="select compact" data-stock-filter>
+            <option value="all">Any stock level</option>
+            <option value="in-stock">In stock</option>
+            <option value="low-stock">Low stock</option>
+          </select>
+        </label>
+        <label>Fulfillment
+          <select class="select compact" data-fulfillment-filter>
+            <option value="all">Pickup or delivery</option>
+            <option value="pickup">Store pickup</option>
+            <option value="delivery">Local delivery</option>
+          </select>
+        </label>
       </aside>
       <div>
         <div class="catalog-summary">

@@ -10,14 +10,15 @@
     <section class="section">
       <div class="grid two">
         <div class="card"><h2>Cart</h2><div data-order-summary></div></div>
-        <form class="card form-grid" data-confirm-form="#order-notice">
+        <form class="card form-grid" data-confirm-form="#order-notice" data-confirm-message="Order {number} received. We will email availability, pickup timing, and final total before anything is held.">
           <label>Name<input class="field" required name="name"></label>
           <label>Email<input class="field" required type="email" name="email"></label>
           <label>Fulfillment<select class="select" name="method"><option>Pickup</option><option>Local delivery</option></select></label>
-          <label>Preferred store<select class="select" name="store"><option>Downtown Chico</option><option>North Valley</option><option>East Avenue</option><option>South Chico</option></select></label>
+          <label>Preferred store<select class="select" name="store"><option>Floral Avenue</option><option>Glenwood Avenue</option><option>Talbert Drive</option></select></label>
           <label class="full">Notes<textarea class="textarea" name="notes"></textarea></label>
+          <p class="tiny full">Payment is completed after the store confirms your order. Cards, cash, and gift cards are accepted at pickup.</p>
           <button class="button full" type="submit">Submit Order</button>
-          <p id="order-notice" class="notice full">Order request submitted. A staff confirmation would be sent by email.</p>
+          <p id="order-notice" class="notice full">Order received. We will email availability, pickup timing, and final total before anything is held.</p>
         </form>
       </div>
     </section>

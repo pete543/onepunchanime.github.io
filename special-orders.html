@@ -9,14 +9,14 @@
     <section class="page-hero"><span class="eyebrow">Hard-to-find requests</span><h1>Special Orders</h1><p>Request anime figures, manga, comics, model kits, or collectibles not currently listed in the catalog.</p></section>
     <section class="section">
       <div class="grid two">
-        <form class="card form-grid" data-confirm-form="#special-order-notice">
+        <form class="card form-grid" data-confirm-form="#special-order-notice" data-confirm-message="Request {number} received. We will follow up with availability, estimated timing, and price.">
           <label>Name<input class="field" required name="name"></label>
           <label>Email<input class="field" required type="email" name="email"></label>
           <label>Item type<select class="select" name="type"><option>Figure</option><option>Manga</option><option>Comic</option><option>Accessory</option><option>Other</option></select></label>
           <label>Target budget<input class="field" name="budget" placeholder="$"></label>
           <label class="full">Item details<textarea class="textarea" required name="details"></textarea></label>
           <button class="button full" type="submit">Submit Request</button>
-          <p id="special-order-notice" class="notice full">Request received. Store staff would follow up with availability and price.</p>
+          <p id="special-order-notice" class="notice full">Request received. We will follow up with availability, estimated timing, and price.</p>
         </form>
         <div class="card">
           <h2>Request workflow</h2>
